@@ -1,10 +1,10 @@
 package org.mfh144.dtog;
 
 /**
- * Hello world!
+ * Main class of the DTOG application. 
  *
  */
-public class App 
+public class DtogApp 
 {
     public static void main( String[] args )
     {

@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class AppTest {
+public class DtogAppTest {
 
 	@DisplayName("Test Spring")
 	@Test
