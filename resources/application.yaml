@@ -1,6 +1,17 @@
+logging:
+  level:
+    org.springframework: ERROR
+    org.mfh114.dtog: DEBUG
+
+spring:
+  profiles:
+    active: dev
+  main:
+    banner-mode: "off"
+
 application:
  name: Data Transfer Object Generator (DTOG)
- config_root: config
- jdbclib_root: jdbclib
- plugins_root: plugins
+ configRoot: /config
+ jdbcLibRoot: /jdbclib
+ pluginsRoot: /plugins
 
