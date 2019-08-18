@@ -11,7 +11,7 @@ spring:
 
 application:
  name: Data Transfer Object Generator (DTOG)
- configRoot: /config
- jdbcLibRoot: /jdbclib
- pluginsRoot: /plugins
+ configRoot: config
+ jdbcLibRoot: jdbclib
+ pluginsRoot: plugins
 
