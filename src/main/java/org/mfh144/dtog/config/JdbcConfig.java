@@ -5,9 +5,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
-@PropertySource("file:../config/jdbc.yaml")
+@PropertySource("file:config/jdbc.yaml")
 @ConfigurationProperties
-public class Jdbc {
+public class JdbcConfig {
 
 	public String name;
 	public String jdbcLibLoc;

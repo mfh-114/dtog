@@ -1,10 +1,12 @@
 package org.mfh144.dtog.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties
+@PropertySource("classpath:application.yaml")
 public class DtogConfig {
 
 	private Application application;

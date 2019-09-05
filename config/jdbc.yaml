@@ -1,0 +1,7 @@
+jdbc:
+ name:mysql;
+ jdbcLibLoc:/home/fhaider/Development/java-lib/mysql/mysql-connector-java-8.0.17/mysql-connector-java-8.0.17.jar
+ driverClass:com.mysql.cj.jdbc.Driver
+ connectionURL:jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC
+ username:root
+ password:root2019
