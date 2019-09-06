@@ -31,20 +31,24 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DtogApp implements CommandLineRunner {
 
-	@Autowired
 	private DtogConfig dtogConfig;
-	
-	@Autowired
-	private JdbcConfig jdbcConfig;
+	private JdbcConnectionFactory jdbcConnectionFactory;
 
 	@Autowired
-	private JdbcConnectionFactory jdbcConnectionFactory;
+	public void setDtogConfig(DtogConfig dtogConfig) {
+		this.dtogConfig = dtogConfig;
+	}
+
+	@Autowired
+	public void setJdbcConnectionFactory(JdbcConnectionFactory jdbcConnectionFactory) {
+		this.jdbcConnectionFactory = jdbcConnectionFactory;
+	}
 
 	public static void main(String[] args) {
 
 		System.setProperty("app.home", "dtog");
-
-		System.out.println("Config: " + new File("config/jdbc.yaml").getAbsolutePath());
+		
+		System.out.println("home: "+System.getProperty("app.home"));
 
 		SpringApplication application = new SpringApplication(DtogApp.class);
 		application.run(args);
@@ -53,14 +57,14 @@ public class DtogApp implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		try(Connection con = jdbcConnectionFactory.create()){
-			
+		try (Connection con = jdbcConnectionFactory.create()) {
+
 			System.out.println(con.toString());
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		} 
-	    
+		}
+
 	}
 
 }

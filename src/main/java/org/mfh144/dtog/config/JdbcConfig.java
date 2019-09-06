@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties
 public class JdbcConfig {
 
-	public String name;
-	public String jdbcLibLoc;
+	private String name;
+	private String jdbcLibLoc;
 	private String driverClass;
 	private String connectionURL;
-	public String username;
-	public String password;
+	private String username;
+	private String password;
 
 	public String getName() {
 		return name;

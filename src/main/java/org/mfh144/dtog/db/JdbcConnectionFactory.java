@@ -22,31 +22,39 @@ public class JdbcConnectionFactory {
 
 	private static final Logger logger = LoggerFactory.getLogger(JdbcConnectionFactory.class);
 
-	@Autowired
 	private JarFileLoader<Driver> jarFileLoader;
 
-	@Autowired
 	private JdbcConfig jdbcConfig;
 
 	public JdbcConnectionFactory() {
 
 	}
 
+	@Autowired
+	public void setJarFileLoader(JarFileLoader<Driver> jarFileLoader) {
+		this.jarFileLoader = jarFileLoader;
+	}
+
+	@Autowired
+	public void setJdbcConfig(JdbcConfig jdbcConfig) {
+		this.jdbcConfig = jdbcConfig;
+	}
+
 	public Connection create() throws Exception {
 
 		String url = jdbcConfig.getConnectionURL();
-		String user = jdbcConfig.getUsername();
+		String username = jdbcConfig.getUsername();
 		String password = jdbcConfig.getPassword();
 
 		String query = "SELECT VERSION()";
 		logger.trace(query);
 
-		Driver driver = jarFileLoader.loadClassAsInstance(jdbcConfig.getDriverClass(), new File(jdbcConfig.jdbcLibLoc));
-	    Properties prop = new Properties();
-	    prop.setProperty("user",jdbcConfig.getUsername());
-	    prop.setProperty("password" ,jdbcConfig.getPassword());
-	    //DriverManager.registerDriver(driver);
-		
+		Driver driver = jarFileLoader.loadClassAsInstance(jdbcConfig.getDriverClass(), new File(jdbcConfig.getJdbcLibLoc()));
+		Properties prop = new Properties();
+		prop.setProperty("user", username);
+		prop.setProperty("password", password);
+		// DriverManager.registerDriver(driver);
+
 		try (Connection con = driver.connect(url, prop);
 				Statement st = con.createStatement();
 				ResultSet rs = st.executeQuery(query)) {
@@ -57,12 +65,12 @@ public class JdbcConnectionFactory {
 			}
 
 			return con;
-			
+
 		} catch (SQLException ex) {
 			logger.error(ex.toString());
 			throw ex;
 		}
-		
+
 	}
 
 }
