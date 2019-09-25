@@ -15,6 +15,7 @@ public class JdbcConfig {
 	private String connectionURL;
 	private String username;
 	private String password;
+	private Metadata metadata;
 
 	public String getName() {
 		return name;
@@ -64,10 +65,18 @@ public class JdbcConfig {
 		this.password = password;
 	}
 
+	public Metadata getMetadata() {
+		return metadata;
+	}
+
+	public void setMetadata(Metadata metadata) {
+		this.metadata = metadata;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Jdbc [name=");
+		builder.append("JdbcConfig [name=");
 		builder.append(name);
 		builder.append(", jdbcLibLoc=");
 		builder.append(jdbcLibLoc);
@@ -79,6 +88,8 @@ public class JdbcConfig {
 		builder.append(username);
 		builder.append(", password=");
 		builder.append(password);
+		builder.append(", metadata=");
+		builder.append(metadata);
 		builder.append("]");
 		return builder.toString();
 	}

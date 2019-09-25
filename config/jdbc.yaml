@@ -5,3 +5,18 @@ jdbc:
  connectionURL:jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC
  username:root
  password:root2019
+
+### Metadata config is not available in the first version ###
+### It should be available in the next version ###
+metadata:
+ ### List of schemas or empty means all schemas ###
+ schemas:
+  - name:Schema1
+  ### list of tables or empty means all tables ###
+  - tables
+   - table1
+   - tableN
+  - name:Schema2
+  - name:Schema3
+  
+  

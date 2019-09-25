@@ -20,7 +20,6 @@ public class JdbcJarFileLoader implements JarFileLoader<Driver> {
 		URL[] urls = new URL[1];
 		urls[0] = jdbcJarFile.toURI().toURL();
 		
-		@SuppressWarnings("resource")
 		URLClassLoader driverClassLoader = new URLClassLoader(urls, ClassLoader.getSystemClassLoader());
 		
 		Class<?> drvClass = Class.forName(classname,true, driverClassLoader);

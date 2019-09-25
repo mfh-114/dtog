@@ -53,9 +53,10 @@ public class JdbcConnectionFactory {
 		Properties prop = new Properties();
 		prop.setProperty("user", username);
 		prop.setProperty("password", password);
-		// DriverManager.registerDriver(driver);
+		DriverManager.registerDriver(new JdbcDriverProxy(driver));
 
-		try (Connection con = driver.connect(url, prop);
+		//try (Connection con = driver.connect(url, prop);
+		try (Connection con = DriverManager.getConnection(url, prop);
 				Statement st = con.createStatement();
 				ResultSet rs = st.executeQuery(query)) {
 
