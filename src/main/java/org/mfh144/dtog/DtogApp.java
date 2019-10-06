@@ -2,6 +2,7 @@ package org.mfh144.dtog;
 
 import java.sql.Connection;
 
+import org.mfh144.dtog.db.DBConnection;
 import org.mfh144.dtog.db.JdbcConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -40,10 +41,13 @@ public class DtogApp implements CommandLineRunner {
 		try (Connection con = jdbcConnectionFactory.create()) {
 
 			System.out.println(con.toString());
+			con.setAutoCommit(true);
+			con.setReadOnly(true);
+			DBConnection dbConnection = new DBConnection(con);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
 
 	}
 
