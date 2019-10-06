@@ -14,7 +14,6 @@ import org.mfh144.dtog.loader.JarFileLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -49,13 +48,14 @@ public class JdbcConnectionFactory {
 		String query = "SELECT VERSION()";
 		logger.trace(query);
 
-		Driver driver = jarFileLoader.loadClassAsInstance(jdbcConfig.getDriverClass(), new File(jdbcConfig.getJdbcLibLoc()));
+		Driver driver = jarFileLoader.loadClassAsInstance(jdbcConfig.getDriverClass(),
+				new File(jdbcConfig.getJdbcLibLoc()));
 		Properties prop = new Properties();
 		prop.setProperty("user", username);
 		prop.setProperty("password", password);
 		DriverManager.registerDriver(new JdbcDriverProxy(driver));
 
-		//try (Connection con = driver.connect(url, prop);
+		// try (Connection con = driver.connect(url, prop);
 		try (Connection con = DriverManager.getConnection(url, prop);
 				Statement st = con.createStatement();
 				ResultSet rs = st.executeQuery(query)) {

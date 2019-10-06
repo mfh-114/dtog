@@ -1,12 +1,12 @@
 package org.mfh144.dtog.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
+import java.util.List;
 
-@Component
-@PropertySource("file:config/jdbc.yaml")
-@ConfigurationProperties
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonInclude(value = Include.NON_EMPTY)
 public class JdbcConfig {
 
 	private String name;
@@ -15,8 +15,13 @@ public class JdbcConfig {
 	private String connectionURL;
 	private String username;
 	private String password;
-	private Metadata metadata;
+	private List<Schema> schemas;
 
+	public JdbcConfig() {
+
+	}
+
+	@JsonProperty("Name")
 	public String getName() {
 		return name;
 	}
@@ -25,6 +30,7 @@ public class JdbcConfig {
 		this.name = name;
 	}
 
+	@JsonProperty("JdbcLibLoc")
 	public String getJdbcLibLoc() {
 		return jdbcLibLoc;
 	}
@@ -33,6 +39,7 @@ public class JdbcConfig {
 		this.jdbcLibLoc = jdbcLibLoc;
 	}
 
+	@JsonProperty("DriverClass")
 	public String getDriverClass() {
 		return driverClass;
 	}
@@ -41,6 +48,7 @@ public class JdbcConfig {
 		this.driverClass = driverClass;
 	}
 
+	@JsonProperty("ConnectionURL")
 	public String getConnectionURL() {
 		return connectionURL;
 	}
@@ -49,6 +57,7 @@ public class JdbcConfig {
 		this.connectionURL = connectionURL;
 	}
 
+	@JsonProperty("Username")
 	public String getUsername() {
 		return username;
 	}
@@ -57,6 +66,7 @@ public class JdbcConfig {
 		this.username = username;
 	}
 
+	@JsonProperty("Password")
 	public String getPassword() {
 		return password;
 	}
@@ -65,12 +75,13 @@ public class JdbcConfig {
 		this.password = password;
 	}
 
-	public Metadata getMetadata() {
-		return metadata;
+	@JsonProperty("Schemas")
+	public List<Schema> getSchemas() {
+		return schemas;
 	}
 
-	public void setMetadata(Metadata metadata) {
-		this.metadata = metadata;
+	public void setSchemas(List<Schema> schemas) {
+		this.schemas = schemas;
 	}
 
 	@Override
@@ -88,8 +99,8 @@ public class JdbcConfig {
 		builder.append(username);
 		builder.append(", password=");
 		builder.append(password);
-		builder.append(", metadata=");
-		builder.append(metadata);
+		builder.append(", schemas=");
+		builder.append(schemas);
 		builder.append("]");
 		return builder.toString();
 	}

@@ -1,0 +1,14 @@
+{
+    "Name":"mysql",
+    "JdbcLibLoc":"/home/fhaider/Development/java-lib/mysql/mysql-connector-java-8.0.17/mysql-connector-java-8.0.17.jar",
+    "DriverClass":"com.mysql.cj.jdbc.Driver",
+    "ConnectionURL":"jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC",
+    "Username":"root",
+    "Password":"root2019",
+    "Schemas":[
+       {
+         "Name":"schema1",
+         "Tables":["tbl1","tbln"]  
+       }
+     ]
+}

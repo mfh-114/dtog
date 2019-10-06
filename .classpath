@@ -24,5 +24,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JACKSON-CORE-2.10"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JACKSON-DATABIND-2.10"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JACKSON-ANNOTATIONS-2.10"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
