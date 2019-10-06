@@ -44,6 +44,7 @@ public class DtogApp implements CommandLineRunner {
 			con.setAutoCommit(true);
 			con.setReadOnly(true);
 			DBConnection dbConnection = new DBConnection(con);
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
