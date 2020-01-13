@@ -1,0 +1,30 @@
+{
+	"dtog-config":{
+		"jdbc":{
+			"url":"jdbc://",
+			"username":"root",
+			"passoword":"root"
+		},
+		"cache-dir":"c:\\ddd",
+		"dtog-plugins":[
+			{
+				"pkg":"org.some.plugin",
+				"Class":"MyPluginClass",
+				"config":[
+					{
+						"key":"keyVal1", 
+						"value":"val1"
+					},
+					{
+						"key":"keyVal2", 
+						"value":"val2"
+					},
+					{
+						"key":"keyVal3", 
+						"value":["v1","v2"]
+					}												
+				]
+			}
+		]
+	}
+}
