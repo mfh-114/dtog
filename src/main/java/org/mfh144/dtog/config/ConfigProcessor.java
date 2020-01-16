@@ -12,6 +12,7 @@ import groovy.json.JsonSlurper;
 public class ConfigProcessor {
 
 	private Reader<String> configFileReader;
+	private ConfigInquirer configInquirer;
 
 	public ConfigProcessor() {
 
@@ -21,7 +22,24 @@ public class ConfigProcessor {
 		this.configFileReader = configFileReader;
 	}
 
-	public Map<String, Object> parse() throws IOException {
+	public void setConfigInquirer(ConfigInquirer configInquirer) {
+		this.configInquirer = configInquirer;
+	}
+
+	public void process() throws IOException {
+		Map<String, Object> configMap = this.parse();
+
+		if (configMap == null || configMap.isEmpty())
+			throw new IllegalArgumentException("Configuration settings are empty.");
+
+		this.configInquirer.setConfigMap(configMap);
+	}
+
+	private Map<String, Object> parse() throws IOException {
+
+		if (configFileReader == null)
+			throw new IllegalArgumentException("Reader<String> object is not set.");
+
 		String config = configFileReader.read(new File(DtogAppConvention.getConfigFileLocation()));
 
 		JsonSlurper jslurper = new JsonSlurper();

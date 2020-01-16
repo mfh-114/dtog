@@ -2,23 +2,7 @@ package org.mfh144.dtog.config;
 
 import java.util.Map;
 
-public class DtogConfigInquirer implements ConfigInquirer {
-
-	private final Map<String, Object> configMap;
-
-	public DtogConfigInquirer(final Map<String, Object> configMap) {
-		this.configMap = configMap;
-	}
-
-	/***
-	 * Query the configuration map by key and return object.
-	 * 
-	 * @param key
-	 * @return value as Object
-	 */
-	private Object getValue(String key) {
-		return null;
-	}
+public class ConfigInquirerStub implements ConfigInquirer {
 
 	@Override
 	public Boolean getValueAsBoolean(String key) {
@@ -46,6 +30,8 @@ public class DtogConfigInquirer implements ConfigInquirer {
 
 	@Override
 	public void setConfigMap(Map<String, Object> configMap) {
+		// TODO Auto-generated method stub
 		
 	}
+
 }
