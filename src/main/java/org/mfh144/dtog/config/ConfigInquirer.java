@@ -6,12 +6,6 @@ public interface ConfigInquirer {
 
 	public void setConfigMap(Map<String, Object> configMap);
 
-	public Boolean getValueAsBoolean(String key);
-
-	public Integer getValueAsInt(String key);
-
-	public String getValueAsString(String key);
-
-	public String getValueAsList(String key);
+	public <T> T getValue(String key);
 
 }
